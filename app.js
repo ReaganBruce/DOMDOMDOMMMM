@@ -26,8 +26,6 @@ document.addEventListener('DOMContentLoaded', function(){
         div.appendChild(boxId)
         boxId.style.display = 'none';
 
-        //I tried to hover: in CSS and it didn't work; Jake helped me out with the mouse functions:
-
         //function that mouseovers on div
         div.addEventListener('mouseover', function(){
             boxId.style.display = 'flex'
@@ -44,22 +42,26 @@ document.addEventListener('DOMContentLoaded', function(){
             let randomColor =  Math.floor(Math.random() * colorsArray.length);
             div.style.backgroundColor = colorsArray[randomColor];
         })
-            //function that removes next sibling and previous sibling if clicked.
-            //I think this works???????????????????????????????????????????????????????????
-          div.addEventListener('dblclick', function(){
-              if(div.nextSibling) {
-                  div.nextSibling.remove();
-              } else {
-                  alert('Nothing to remove!')
-      
-              } if (div.previousSibling) {
-                  div.previousSibling.remove();
-              } else {
-                  alert('Nothing to remove!');
-              }
+            
+            
+            //???????????????????????????????????????????????????????
+            //it removes my button because of the margin in the boxes??
+            div.addEventListener('dblclick', function(){
+                if (div.id % 2 === 0) {
+                    if (div.nextSibling){
+                        div.nextSibling.remove();
+                    } else {
+                        alert('Nothing to remove');
+                    }
 
-          })  
-    }
-    );
+                } else {
+                    if (div.previousSibling){
+                        div.previousSibling.remove();
+                    } else {
+                        alert('Nothing to remove!');
+                    }
+                }
+            });
+    });
 
 });
